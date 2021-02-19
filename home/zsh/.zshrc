@@ -110,9 +110,22 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cls="source ~/.zshrc"
+alias ssh="kitty +kitten ssh"
+
 function nvimp () {
     source ~/.config/nvim/env/bin/activate
     nvim $1
+    deactivate
+}
+
+function pylint () {
+    source ~/.config/nvim/env/bin/activate
+    echo "pylint:"
+    python -m pylint --rcfile=~/.config/pylintrc $1
+    echo "done!"
+    echo "flake8:"
+    python -m flake8 --config ~/.config/flake8 $1
+    echo "done!"
     deactivate
 }
 
