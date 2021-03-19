@@ -1,0 +1,11 @@
+[Unit]
+Description=vban - Linux command-line VBAN tools
+After=sound.target
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/vban_emitter -i192.168.0.20 -p6980 -sGaming_PC
+
+[Install]
+WantedBy=multi-user.target

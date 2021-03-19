@@ -1,9 +1,0 @@
-[Unit]
-Description=PulseAudio server
-
-[Service]
-Type=notify
-ExecStart=pulseaudio --daemonize=no --realtime --log-target=journal
-
-[Install]
-WantedBy=default.target

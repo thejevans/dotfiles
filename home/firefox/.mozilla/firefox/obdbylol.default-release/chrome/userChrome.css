@@ -44,5 +44,17 @@
   z-index: 1;
 }
 
+#navigator-toolbox {
+    height: 0px !important;
+    min-height: 0px !important;
+    overflow: hidden !important;
+}
+
+#navigator-toolbox:focus,
+#navigator-toolbox:focus-within,
+#navigator-toolbox:active {
+    height: auto !important;
+}
+
 :root { --thin-tab-width: 10px; }
 :root { --wide-tab-width: 200px; }

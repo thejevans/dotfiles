@@ -112,6 +112,28 @@ source $ZSH/oh-my-zsh.sh
 alias cls="source ~/.zshrc"
 alias ssh="kitty +kitten ssh"
 
+function hibernate() {
+    echo Removing IO cache limit...
+    sudo sysctl -w vm.dirty_ratio=100
+    sudo sysctl -w vm.dirty_background_ratio=100
+    sleep 5
+    sudo s2disk $1
+    echo Replacing IO cache limit...
+    sudo sysctl -w vm.dirty_background_ratio=10
+    sudo sysctl -w vm.dirty_ratio=20
+}
+
+function hreboot() {
+    echo Removing IO cache limit...
+    sudo sysctl -w vm.dirty_ratio=100
+    sudo sysctl -w vm.dirty_background_ratio=100
+    sleep 5
+    sudo s2disk -P 'shutdown method = reboot' $1
+    echo Replacing IO cache limit...
+    sudo sysctl -w vm.dirty_background_ratio=10
+    sudo sysctl -w vm.dirty_ratio=20
+}
+
 function nvimp () {
     source ~/.config/nvim/env/bin/activate
     nvim $1
